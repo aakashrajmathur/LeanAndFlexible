@@ -1,0 +1,181 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Xml;
+
+namespace FlowAssessmentTool
+{
+    class DataImport
+    {
+        public Study ImportFromCSVFile(string filePath)
+        {
+            Study study = new Study();
+
+            PopulateMachines(filePath, study);
+            PopulateParts(filePath, study);
+            study.ComputeDefaultSelections();
+
+            return study;
+        }
+
+        private void PopulateMachines(string filePath, Study study)
+        {
+            int counter = 0;
+            string line;
+
+            HashSet<String> machines = new HashSet<string>();
+            try
+            {
+                System.IO.StreamReader file = new System.IO.StreamReader(filePath);
+                while ((line = file.ReadLine()) != null)
+                {
+                    if (counter > 0)
+                    {
+                        string[] tokens = line.Split(',');
+                        string[] machineTokens = tokens[4].Split(new string[] { "->" }, StringSplitOptions.None);
+
+                        foreach (String s in machineTokens)
+                        {
+                            machines.Add(s);
+                        }
+                    }
+
+                    counter++;
+                }
+                file.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace.ToString());
+            }
+            ///////////////////////
+            foreach (String s in machines)
+            {
+                study.machinesInStudy.Add(new Machine(s));
+            }
+
+        }
+
+        private void PopulateParts(string filePath, Study study)
+        {
+            int counter = 0;
+            string line;
+
+            System.IO.StreamReader file = new System.IO.StreamReader(filePath);
+            while ((line = file.ReadLine()) != null)
+            {
+                if (counter > 0)
+                {
+                    Part part = new Part();
+
+                    string[] tokens = line.Split(',');
+                    part.name = tokens[1];
+                    part.quantity = Convert.ToSingle(tokens[2]);
+                    part.revenue = Convert.ToSingle(tokens[3]);
+
+                    string[] machineTokens = tokens[4].Split(new string[] { "->" }, StringSplitOptions.None);
+
+                    foreach (String s in machineTokens)
+                    {
+                        Machine currentMachine = study.GetMachineFromExistingListInStudy(s);
+                        if (currentMachine != null)
+                        {
+                            part.routing.Add(currentMachine);
+                        }
+                    }
+
+                    study.partsInStudy.Add(part);
+                    UpdateMaxMinQuantityAndRevenue(part, study);
+                }
+                counter++;
+            }
+        }
+
+        public void UpdateMaxMinQuantityAndRevenue(Part part, Study study)
+        {
+            if (part.quantity > study.maxQuantity)
+            {
+                study.maxQuantity = part.quantity;
+            }
+
+            if (part.quantity < study.minQuantity)
+            {
+                study.minQuantity = part.quantity;
+            }
+
+            if (part.revenue > study.maxRevenue)
+            {
+                study.maxRevenue = part.revenue;
+            }
+
+            if (part.revenue < study.minRevenue)
+            {
+                study.minRevenue = part.revenue;
+            }
+        }
+
+        public Study ReadXMLFile(string filePath)
+        {
+            Study study = new Study();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"out.JSON");
+
+            XmlNodeList selectionNodes = doc.DocumentElement.SelectNodes("/Study/Selection");
+            foreach (XmlNode node in selectionNodes)
+            {
+                string currentSelectionName = node.SelectSingleNode("Name").InnerText.ToString();
+                bool currentIsSystemGenerated = bool.Parse(node.SelectSingleNode("IsSystemGenerated").InnerText.ToString());
+                List<Part> partsInSelection = new List<Part>();
+
+                XmlNodeList partNodes = node.SelectNodes("Part");
+                foreach (XmlNode partNode in partNodes)
+                {
+                    XmlNodeList machineNodes = partNode.SelectNodes("Machine");
+                    List<Machine> currentRouting = new List<Machine>();
+                    foreach (XmlNode machineNode in machineNodes)
+                    {
+                        string currentMachineName = machineNode.SelectSingleNode("Name").InnerText.ToString();
+                        //MessageBox.Show("Machine = " + currentMachineName);
+                        Machine m = study.GetMachineFromExistingListInStudy(currentMachineName);
+                        if (m == null)
+                        {
+                            m = new Machine(currentMachineName);
+                            study.machinesInStudy.Add(m);
+                        }
+                        currentRouting.Add(m);
+                    }
+
+                    string currentPartName = partNode.SelectSingleNode("Name").InnerText.ToString();
+                    string currentPartRevenue = partNode.SelectSingleNode("Revenue").InnerText.ToString();
+                    string currentPartQuantity = partNode.SelectSingleNode("Quantity").InnerText.ToString();
+                    //MessageBox.Show("Part = " + currentPartName + ", $ = " + currentPartQuantity + ", R = " + currentPartRevenue);
+
+                    Part part = study.GetPartFromExistingListInStudy(currentPartName, currentPartRevenue, currentPartQuantity, currentRouting);
+                    if (part == null)
+                    {
+                        part = new Part();
+                        part.name = currentPartName;
+                        part.revenue = float.Parse(currentPartRevenue);
+                        part.quantity = float.Parse(currentPartQuantity);
+                        part.routing = currentRouting;
+
+                        study.partsInStudy.Add(part);
+                    }
+                    //Add to Selection:
+                    partsInSelection.Add(part);
+                }
+                Selection selection = new Selection(currentSelectionName, currentIsSystemGenerated);
+                selection.PartsInSelection = partsInSelection;
+                study.selectionsInStudy.Add(selection);
+            }
+
+            return study;
+        }
+    }
+}

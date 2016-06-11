@@ -1,0 +1,40 @@
+﻿<Window x:Class="NewHorizons.PriorityStarting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewHorizons"
+        mc:Ignorable="d"
+        Title="PriorityStarting" Height="300" Width="400" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid Loaded="Grid_Loaded" Background="#FFFDFBFB">
+        <Label Foreground="Black" Margin="0,10,0,265" Content="Select an existing selection to edit" FontFamily="Microsoft YaHei Light" FontSize="18" Padding="5,0"/>
+        <ListBox x:Name="selectionListBox" HorizontalAlignment="Left" Height="215" Margin="10,45,0,0" VerticalAlignment="Top" Width="380" Background="{x:Null}" />
+        <Button x:Name="cancelButton"  Style="{StaticResource MyButton}" Content="Cancel" HorizontalAlignment="Left" Margin="315,265,0,0" VerticalAlignment="Top" Width="75" Background="#FFE95B4C" BorderBrush="#FF3F3F46" Foreground="White" Height="25" Click="cancelButton_Click" />
+        <Button x:Name="newSelectionButton"  Style="{StaticResource MyButton}" Content="New" HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="75" Background="#FF0CB32D" Foreground="White" Height="25" BorderBrush="#FF0F0808" Click="newSelectionButton_Click"/>
+        <Button x:Name="editSelectionButton"  Style="{StaticResource MyButton}" Content="Edit" HorizontalAlignment="Left" Margin="233,265,0,0" VerticalAlignment="Top" Width="75" Background="#FF415B76" Foreground="White" Height="25" BorderBrush="#FF0F0808" Click="editSelectionButton_Click"/>
+    </Grid>
+
+</Window>

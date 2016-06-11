@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace NewHorizons
+{
+    /// <summary>
+    /// Interaction logic for PriorityUserControl.xaml
+    /// </summary>
+    public partial class PriorityUserControl : UserControl
+    {
+        private Study study;
+        public PriorityUserControl()
+        {
+            InitializeComponent();
+        }
+
+        public void updateUI(Study study, string startSelectionName = "")
+        {
+            this.study = study;
+            prioritySliderLabel.Content = PrioritySlider.Value;
+            MessageBox.Show(startSelectionName);
+            //MessageBox.Show("From Priority user control's update UI.");
+        }
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (((System.Windows.UIElement)sender).IsVisible == false)
+            {
+                MessageBox.Show("Priority just lost visiblity, ask user to save work...");
+            }
+        }
+
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            prioritySliderLabel.Content = PrioritySlider.Value; 
+            new SelectionCreation().CreateSelection(study, PrioritySlider.Value, "Testing");
+            
+        }
+    }
+}

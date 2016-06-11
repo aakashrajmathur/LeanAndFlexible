@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FlowAssessmentTool
+{
+    public class Selection
+    {
+        public string name;
+        public bool isSystemGenerated;
+        public List<Part> PartsInSelection;
+
+        public Selection(string name)
+        {
+            this.name = name;
+            this.isSystemGenerated = false;
+            this.PartsInSelection = new List<Part>();
+        }
+
+        public Selection(string name, bool isSystemGenerated)
+        {
+            this.name = name;
+            this.isSystemGenerated = isSystemGenerated;
+            this.PartsInSelection = new List<Part>();
+        }
+
+        public string ToJSONString()
+        {
+            //Panding...
+            return "";
+        }
+
+        public string ToXML()
+        {
+            string temp = "<Selection>" + Environment.NewLine;
+            temp = temp + "<Name>" + name + "</Name>" + Environment.NewLine;
+            temp = temp + "<IsSystemGenerated>" + isSystemGenerated + "</IsSystemGenerated>" + Environment.NewLine;
+
+            foreach (Part part in PartsInSelection)
+            {
+                temp = temp + part.ToXML();
+            }
+
+            temp = temp + "</Selection>" + Environment.NewLine;
+            return temp;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace NewHorizons
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void SetAllIconsToUnSelected()
+        {
+            HomeIcon.Source = new BitmapImage(new Uri(@"Icons/Home.png", UriKind.RelativeOrAbsolute));
+            PriorityIcon.Source = new BitmapImage(new Uri(@"Icons/Priority.png", UriKind.RelativeOrAbsolute));
+            StudioIcon.Source = new BitmapImage(new Uri(@"Icons/Studio.png", UriKind.RelativeOrAbsolute));
+        }
+
+        private void HomeIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SetAllIconsToUnSelected();
+            HomeIcon.Source = new BitmapImage(new Uri(@"Icons/Home-Selected.png", UriKind.RelativeOrAbsolute));
+            
+        }
+
+        private void PriorityIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SetAllIconsToUnSelected();
+            PriorityIcon.Source = new BitmapImage(new Uri(@"Icons/Priority-Selected.png", UriKind.RelativeOrAbsolute));
+        }
+
+        private void StudioIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SetAllIconsToUnSelected();
+            StudioIcon.Source = new BitmapImage(new Uri(@"Icons/Studio-Selected.png", UriKind.RelativeOrAbsolute));
+        }
+    }
+}
+
+
+///REFEENCES: 
+///despeckle-01 

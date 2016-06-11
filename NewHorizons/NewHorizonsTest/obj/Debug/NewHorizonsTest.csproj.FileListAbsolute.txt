@@ -1,0 +1,8 @@
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\bin\Debug\NewHorizonsTest.dll
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\bin\Debug\NewHorizonsTest.pdb
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\bin\Debug\NewHorizons.exe
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\bin\Debug\NewHorizons.pdb
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\obj\Debug\NewHorizonsTest.csprojResolveAssemblyReference.cache
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\obj\Debug\NewHorizonsTest.dll
+C:\src\LeanAndFlexible\NewHorizons\NewHorizonsTest\obj\Debug\NewHorizonsTest.pdb

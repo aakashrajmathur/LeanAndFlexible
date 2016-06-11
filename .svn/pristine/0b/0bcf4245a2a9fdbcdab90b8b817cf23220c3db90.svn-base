@@ -1,0 +1,6 @@
+﻿namespace NewHorizons
+{
+    public class Selection
+    {
+    }
+}

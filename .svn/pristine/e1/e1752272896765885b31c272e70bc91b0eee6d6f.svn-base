@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="NewHorizons.HomeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewHorizons"
+             mc:Ignorable="d" Loaded="UserControl_Loaded" 
+             Width="800" MinWidth="400" MaxWidth="800"
+             Height="Auto" 
+             ScrollViewer.CanContentScroll="True" ClipToBounds="True" 
+             VerticalAlignment="Top" VerticalContentAlignment="Top"> <!--Background="#FF4C4C4C" -->
+    <Grid ClipToBounds="True" VerticalAlignment="Top" Height="Auto">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                <Label FontSize="36" Foreground="Black" FontFamily="Microsoft YaHei UI Light">Home</Label>
+                <StackPanel Orientation="Vertical" x:Name="HomeContentStackPanel">
+                    <Label FontSize="24" Foreground="Black" 
+                           FontFamily="Microsoft YaHei UI Light" Margin="10,0,0,0" 
+                           HorizontalAlignment="Left" Width="200">Selections</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <ListBox x:Name="selectionsListBox" Width="200" 
+                             HorizontalAlignment="Left" Background="{x:Null}" SelectionChanged="selectionsListBox_SelectionChanged">
+
+                        </ListBox>
+                        <ListBox x:Name="PartsAlwaysIncluded" Width="150"
+                                 HorizontalAlignment="Left" Background="{x:Null}">
+
+                        </ListBox>
+                        <ListBox x:Name="PartsIncluded" Width="150"
+                                 HorizontalAlignment="Left" Background="{x:Null}">
+
+                        </ListBox>
+                        <ListBox x:Name="PartsNotIncluded" Width="150"
+                                 HorizontalAlignment="Left" Background="{x:Null}">
+
+                        </ListBox>
+                        <ListBox x:Name="PartsNeverIncluded" Width="150"
+                                 HorizontalAlignment="Left" Background="{x:Null}">
+
+                        </ListBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

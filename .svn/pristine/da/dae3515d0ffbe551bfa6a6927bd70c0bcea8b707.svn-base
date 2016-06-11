@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FlowAssessmentTool
+{
+    class DataExport
+    {
+
+        public void WriteStudyToJSON(Study study)
+        {
+            string outputFilePath = @"./out.JSON";
+            File.WriteAllLines(outputFilePath, new[] { study.ToXML() });
+
+            //File.WriteAllLines(outputFilePath, study.ToXML());
+        }
+    }
+}

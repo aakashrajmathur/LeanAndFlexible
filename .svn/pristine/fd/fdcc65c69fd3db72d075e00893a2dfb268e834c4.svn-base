@@ -1,0 +1,17 @@
+﻿using System.Collections.Generic;
+
+namespace NewHorizons
+{
+    public class Selection
+    {
+        public string name;
+        public bool isSystemCreated;
+
+        public List<Part> parts;
+        
+        public Selection()
+        {
+            parts = new List<Part>();
+        }
+    }
+}

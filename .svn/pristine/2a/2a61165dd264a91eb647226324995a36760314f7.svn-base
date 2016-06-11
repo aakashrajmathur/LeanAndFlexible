@@ -1,0 +1,107 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace FlowAssessmentTool
+{
+    /// <summary>
+    /// Interaction logic for PriorityUC.xaml
+    /// </summary>
+    public partial class PriorityUC : UserControl
+    {
+        public Study study;
+       
+        
+        public PriorityUC()
+        {
+            InitializeComponent();
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateCanvasAndListBox();
+        }
+
+        private void revenueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.revenueSliderValueLabel.Content = Math.Round( this.revenueSlider.Value );
+            UpdateCanvasAndListBox();
+        }
+
+        private void quantitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            this.quantitySliderLabel.Content = Math.Round( this.quantitySlider.Value );
+            UpdateCanvasAndListBox();
+        }
+
+        private void UpdateCanvasAndListBox()
+        {
+            priorityCanvas.Children.Clear();
+            priorityCanvas.Children.Add(GetRevenueLine());
+            priorityCanvas.Children.Add(GetQuantityLine());
+            listBox.Items.Clear();
+
+            if(this.study != null)
+            {
+                foreach(Part p in study.partsInStudy)
+                {
+                    
+                    int x = (int)Math.Round((p.revenue - study.minRevenue) * 100 / (study.maxRevenue - study.minRevenue));
+                    int y = (int)Math.Round((p.quantity - study.minQuantity) * 100 / (study.maxQuantity - study.minQuantity));
+
+                    Rectangle rect;
+                    if ((x <= this.revenueSlider.Value) && (y <= this.quantitySlider.Value))
+                    {
+                        rect = new Rectangle { Width = 10, Height = 10, Fill = Brushes.Red };
+                    }
+                    else
+                    {
+                        rect = new Rectangle { Width = 10, Height = 10, Fill = Brushes.Green };
+                        listBox.Items.Add(p.name);
+                    }
+                    priorityCanvas.Children.Add(rect);
+                    Canvas.SetLeft(rect, x * 3 - 5);
+                    Canvas.SetTop(rect, this.priorityCanvas.Height - y * 3 - 5);
+                }
+            }
+
+            label2.Content = this.listBox.Items.Count;
+        }
+
+        private UIElement GetRevenueLine()
+        {
+            Line line = new Line();
+            line.Stroke = Brushes.Black;
+            line.StrokeThickness = 0.5;
+
+            line.X1 = revenueSlider.Value * 3;
+            line.Y1 = 0;
+            line.X2 = revenueSlider.Value * 3;
+            line.Y2 = 300;
+            return line;
+        }
+        private UIElement GetQuantityLine()
+        {
+            Line line = new Line();
+            line.Stroke = Brushes.DarkBlue;
+            line.StrokeThickness = 0.5;
+
+            line.X1 = 300;
+            line.Y1 = 300 - quantitySlider.Value * 3;
+            line.X2 = 0;
+            line.Y2 = 300 - quantitySlider.Value * 3;
+            return line;
+        }
+    }
+}

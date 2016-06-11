@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="NewHorizons.PriorityUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             xmlns:local="clr-namespace:NewHorizons"
+             mc:Ignorable="d" Width="800" 
+             IsVisibleChanged="UserControl_IsVisibleChanged" 
+             MinWidth="400" MaxWidth="800" Height="Auto" 
+             ScrollViewer.CanContentScroll="True" 
+             ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+             ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+    <UserControl.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Width="800">
+                <StackPanel Orientation="Horizontal">
+                    <Label FontSize="36" Foreground="Black" FontFamily="Microsoft YaHei UI Light" VerticalAlignment="Top" Content="Priority" Margin="10,0,318,0"/>
+                    <Button x:Name="SaveButton"  Style="{StaticResource MyButton}" Content="Save" HorizontalAlignment="Left" Margin="5,15,5,5" VerticalAlignment="Top" Width="75" Background="#FF415B76" Foreground="White" Height="25" BorderBrush="#FF0F0808" Click="saveButton_Click"/>
+                    <Button x:Name="SaveAsButton"  Style="{StaticResource MyButton}" Content="Save As" HorizontalAlignment="Left" Margin="5,15,5,5" VerticalAlignment="Top" Width="75" Background="#FF0CB32D" Foreground="White" Height="25" BorderBrush="#FF0F0808" Click="saveAsButton_Click"/>
+                    <Button x:Name="ExitButton"  Style="{StaticResource MyButton}" Content="Exit" HorizontalAlignment="Left" Margin="5,15,5,5" VerticalAlignment="Top" Width="75" Background="#FFE95B4C" BorderBrush="#FF3F3F46" Foreground="White" Height="25" Click="exitButton_Click" />
+                </StackPanel>
+                <Label x:Name="priorityNameLabel" FontSize="8" Foreground="Black" FontFamily="Microsoft YaHei UI Light" Content="selection name" />
+                <Label x:Name="statusLabel" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="365" Height="118"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Slider x:Name="PrioritySlider" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Top" Width="620" Height="21" ValueChanged="slider_ValueChanged" SmallChange="1" Maximum="100" TickPlacement="BottomRight" IsSnapToTickEnabled="True"/>
+                    <Label x:Name="prioritySliderLabel" Content="Label" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <ScrollViewer Width="200">
+                        <StackPanel x:Name="StackPanelAlwaysIncluded">
+                            
+                        </StackPanel>
+                    </ScrollViewer>
+                    <ScrollViewer Width="200">
+                        <StackPanel x:Name="StackPanelIncluded">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    <ScrollViewer Width="200">
+                        <StackPanel x:Name="StackPanelNotIncluded">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    <ScrollViewer Width="200">
+                        <StackPanel x:Name="StackPanelNeverIncluded">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+                
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
+<!-- Background="#FF4C4C4C"  -->

@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+
+namespace NewHorizons
+{
+    /// <summary>
+    /// Interaction logic for HomeUserControl.xaml
+    /// </summary>
+    public partial class HomeUserControl : UserControl
+    {
+        bool isCurrentlyVisible = false;
+        public HomeUserControl()
+        {
+            InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void updateUI(Study study)
+        {
+            MessageBox.Show("From Home user control's update UI. " );
+            if(study != null)
+            {
+                MessageBox.Show("study contains : " + study.machines.Count.ToString() + " machines & " + study.parts.Count.ToString() + " parts.");
+            }
+        }
+    }
+}

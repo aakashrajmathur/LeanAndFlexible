@@ -1,0 +1,23 @@
+﻿using System.Collections.Generic;
+
+namespace NewHorizons
+{
+    public class Selection
+    {
+        public string name;
+        public bool isSystemCreated;
+
+        public List<Part> partsAlwaysIncluded;
+        public List<Part> partsIncluded;
+        public List<Part> partsNotIncluded;
+        public List<Part> partsNeverIncluded;
+
+        public Selection()
+        {
+            partsAlwaysIncluded = new List<Part>();
+            partsIncluded = new List<Part>();
+            partsNotIncluded = new List<Part>();
+            partsNeverIncluded = new List<Part>();
+        }
+    }
+}

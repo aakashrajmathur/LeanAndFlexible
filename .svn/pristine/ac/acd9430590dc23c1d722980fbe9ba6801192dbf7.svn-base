@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FlowAssessmentTool
+{
+    public class Study
+    {
+        public List<Part> partsInStudy;
+        public List<Machine> machinesInStudy;
+        public List<Selection> selectionsInStudy;
+
+        public float minQuantity;
+        public float maxQuantity;
+        public float minRevenue;
+        public float maxRevenue;
+
+        public int currentSelectionIndex = 0;
+
+        public Study()
+        {
+            this.partsInStudy = new List<Part>();
+            this.machinesInStudy = new List<Machine>();
+            this.selectionsInStudy = new List<Selection>();
+            this.currentSelectionIndex = 0;
+        }
+
+        public Machine GetMachineFromExistingListInStudy(string machineName)
+        {
+            foreach (Machine m in this.machinesInStudy)
+            {
+                if (m.name.CompareTo(machineName) == 0)
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+
+        public void ComputeDefaultSelections()
+        {
+            partsInStudy.Sort(delegate (Part A, Part B) {
+                if (GetScore(A) == GetScore(B))
+                    return 0;
+                else if (GetScore(A) < GetScore(B))
+                    return 1;
+                else
+                    return -1;
+            });
+
+            //foreach (Part p in partsInStudy)
+            //{
+            //    MessageBox.Show(p.revenue + ", " + p.quantity + " SCORE = " + GetScore(p));
+            //}
+
+            this.selectionsInStudy.Add(CreateSelection(5, "Top 5 percent"));
+            this.selectionsInStudy.Add(CreateSelection(10, "Top 10 percent"));
+            this.selectionsInStudy.Add(CreateSelection(15, "Top 15 percent"));
+            this.selectionsInStudy.Add(CreateSelection(25, "Top 25 percent"));
+            this.selectionsInStudy.Add(CreateSelection(50, "Top 50 percent"));
+            this.selectionsInStudy.Add(CreateSelection(80, "Top 80 percent"));
+            this.selectionsInStudy.Add(CreateSelection(100, "All Parts"));
+
+            //foreach (Selection s in selectionsInStudy)
+            //{
+            //    MessageBox.Show(s.name + "" + s.PartsInSelection.Count());
+            //}
+        }
+
+        private Selection CreateSelection(int percentage, string selectionName)
+        {
+            Selection selection = new Selection(selectionName, true);
+            int counter = (int)Math.Round((double)(percentage * this.partsInStudy.Count() / 100.0));
+
+            for (int i = 0; i < counter; i++)
+            {
+                selection.PartsInSelection.Add(this.partsInStudy[i]);
+            }
+            return selection;
+        }
+
+        public float GetScore(Part part)
+        {
+            float Q_star = (part.quantity - this.minRevenue) / (this.maxRevenue - this.minRevenue);
+            float R_star = (part.revenue - this.minRevenue) / (this.maxRevenue - this.minRevenue);
+
+            return (float)Math.Sqrt((Q_star * Q_star) + (R_star * R_star));
+        }
+
+        public string ToJSONString()
+        {
+            //Pending...
+            return "";
+        }
+
+        public string ToXML()
+        {
+            string temp = "<Study>" + Environment.NewLine;
+            foreach (Selection selection in selectionsInStudy)
+            {
+                temp += selection.ToXML();
+            }
+            temp += "</Study>" + Environment.NewLine;
+            return temp;
+        }
+
+        public Part GetPartFromExistingListInStudy(string currentPartName, string currentPartRevenue, string currentPartQuantity, List<Machine> currentRouting)
+        {
+            foreach (Part p in this.partsInStudy)
+            {
+                if (p.CompareTo(currentPartName, currentPartRevenue, currentPartQuantity, currentRouting) == 0)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+    }
+}
