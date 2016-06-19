@@ -302,7 +302,3 @@ namespace NewHorizons
         //}
     }
 }
-
-
-
-//Testing!
