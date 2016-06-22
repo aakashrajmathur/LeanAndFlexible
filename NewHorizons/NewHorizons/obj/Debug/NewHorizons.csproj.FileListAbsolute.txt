@@ -39,3 +39,5 @@ C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\NewHorizons.Properties.
 C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\NewHorizons.csproj.GenerateResource.Cache
 C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\NewHorizons.exe
 C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\NewHorizons.pdb
+C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\WindowDimensions.g.cs
+C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\WindowDimensions.baml

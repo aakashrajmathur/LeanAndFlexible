@@ -99,6 +99,9 @@
       <DependentUpon>StudioUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Study.cs" />
+    <Compile Include="WindowDimensions.xaml.cs">
+      <DependentUpon>WindowDimensions.xaml</DependentUpon>
+    </Compile>
     <Page Include="HomeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StudioUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowDimensions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,6 +209,12 @@
     <Resource Include="Icons\NeverIncludedUnselected.png" />
     <Resource Include="Icons\NotIncludedSelected.png" />
     <Resource Include="Icons\NotIncludedUnselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="wavesMedium.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BluPrintLongRect.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

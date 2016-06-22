@@ -10,17 +10,6 @@
     <!--Background="#FF4C4C4C" -->
     <Grid>
 
-        <Label x:Name="scoreHeaderLabel" FontSize="18" Foreground="Black" Margin="100,2,639,269"  FontFamily="Microsoft YaHei UI Light">Score:</Label>
-        <Label x:Name="scoreValueLabel" FontSize="18" Foreground="#FF933193" Margin="161,2,493,0"  FontFamily="Microsoft YaHei UI Light" Content="0000000" ClipToBounds="True" Height="29" VerticalAlignment="Top"/>
-
-        <Border BorderThickness="1" BorderBrush="Black">
-            <Canvas x:Name="studioCanvas" HorizontalAlignment="Left" Margin="0,85,0,-237" Width="616" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
-
-            </Canvas>
-        </Border>
-        <ListBox x:Name="listBoxInfo" Canvas.Left="717" Canvas.Top="67" Margin="0,80,10,10" HorizontalAlignment="Right" Width="165"/>
-        <Button x:Name="backgroundButton" Content="Background" HorizontalAlignment="Left" Margin="10,4,0,0" Width="85" Click="backgroundButton_Click" Height="21" VerticalAlignment="Top"/>
-        <Canvas x:Name="objectiveFunctionCanvas" HorizontalAlignment="Left" Height="65" Margin="284,10,0,0" VerticalAlignment="Top" Width="504" Background="#FFF0F1D4"/>
-
+        
     </Grid>
 </UserControl>
