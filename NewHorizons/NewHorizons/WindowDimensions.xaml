@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NewHorizons"
         mc:Ignorable="d"
-        Title="WindowDimensions" Height="235" Width="406.098" WindowStyle="None">
+        Title="WindowDimensions" Height="235" Width="406.098" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="BluPrintLongRect.jpg" Stretch="UniformToFill"/>
@@ -14,14 +14,66 @@
         <Label x:Name="widthLabel" Content="Width" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" FontWeight="ExtraLight" RenderTransformOrigin="0.203,0.558" Foreground="White"/>
         <Label x:Name="lengthLabel" Content="Length" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" FontWeight="ExtraLight" Foreground="White"/>
         <Label x:Name="labelWidthUnits" Content="feet" HorizontalAlignment="Left" Margin="146,81,0,0" VerticalAlignment="Top" FontWeight="ExtraLight" Foreground="White" RenderTransformOrigin="0.542,0.687"/>
-        <TextBox x:Name="widthTextBox" HorizontalAlignment="Left" Height="21" Margin="55,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" Text="125" Background="#BFFFFFFF" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="lengthTextBox" HorizontalAlignment="Left" Height="19" Margin="54,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Text="125" VerticalContentAlignment="Center" Background="#BFFFFFFF"/>
         <Label x:Name="labelLengthUnits" Content="feet" HorizontalAlignment="Left" Margin="146,49,0,0" VerticalAlignment="Top" FontWeight="ExtraLight" Foreground="White"/>
         <Label x:Name="backgroundImageLabel" Content="Background Image" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" FontWeight="ExtraLight" FontSize="16" ForceCursor="True" Foreground="White"/>
         <Label x:Name="backgroundImageLabel2" Content="(optional)" HorizontalAlignment="Left" Margin="146,124,0,0" VerticalAlignment="Top" FontWeight="ExtraLight" FontSize="10" Foreground="White"/>
-        <Button x:Name="browseButton" Content="Browse" HorizontalAlignment="Left" Margin="315,149,0,0" VerticalAlignment="Top" Width="75" VerticalContentAlignment="Center" Background="#E5DDDDDD" Foreground="Black" BorderThickness="1" Padding="1,1,1,2"/>
-        <TextBox x:Name="textBox" Height="21" Margin="55,149,90,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="ExtraLight" Background="#BFFFFFFF"/>
-        <Button x:Name="doneButton" Content="Done" HorizontalAlignment="Left" Margin="315,190,0,0" VerticalAlignment="Top" Width="75" VerticalContentAlignment="Center" Background="#BF38CE70" Foreground="Black" BorderThickness="1" Padding="1,1,1,2"/>
+        <Button x:Name="browseButton" Content="Browse" HorizontalAlignment="Left" Margin="315,149,0,0" VerticalAlignment="Top" Width="75" VerticalContentAlignment="Center" Background="#E5DDDDDD" Foreground="Black" BorderThickness="1" Padding="1,1,1,2" Click="browseButton_Click"/>
+        <TextBox x:Name="textBoxBackground" Height="21" Margin="55,149,96.4,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="ExtraLight" Background="#BFFFFFFF"/>
+        <Button x:Name="doneButton" Content="Done" HorizontalAlignment="Left" Margin="315,190,0,0" VerticalAlignment="Top" Width="75" VerticalContentAlignment="Center" Background="#BF38CE70" Foreground="Black" BorderThickness="1" Padding="1,1,1,2" Click="doneButton_Click"/>
+        <ComboBox x:Name="comboBoxLength" HorizontalAlignment="Left" Margin="60,50,0,0" VerticalAlignment="Top" Width="81" SelectedIndex="9" DropDownClosed="comboBoxLength_DropDownClosed">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#BFE5E5E5" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <ComboBoxItem Content="50"/>
+            <ComboBoxItem Content="100"/>
+            <ComboBoxItem Content="150"/>
+            <ComboBoxItem Content="200"/>
+            <ComboBoxItem Content="250"/>
+            <ComboBoxItem Content="300"/>
+            <ComboBoxItem Content="350"/>
+            <ComboBoxItem Content="400"/>
+            <ComboBoxItem Content="450"/>
+            <ComboBoxItem Content="500"/>
+            <ComboBoxItem Content="550"/>
+            <ComboBoxItem Content="600"/>
+            <ComboBoxItem Content="650"/>
+            <ComboBoxItem Content="750"/>
+            <ComboBoxItem Content="800"/>
+            <ComboBoxItem Content="850"/>
+            <ComboBoxItem Content="900"/>
+            <ComboBoxItem Content="950"/>
+            <ComboBoxItem Content="1000"/>
+        </ComboBox>
+        <ComboBox x:Name="comboBoxWidth" HorizontalAlignment="Left" Margin="60,81,0,0" VerticalAlignment="Top" Width="81" SelectedIndex="9" Foreground="Black" DropDownClosed="comboBoxWidth_DropDownClosed">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#00E5E5E5" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <ComboBoxItem Content="50"/>
+            <ComboBoxItem Content="100"/>
+            <ComboBoxItem Content="150"/>
+            <ComboBoxItem Content="200"/>
+            <ComboBoxItem Content="250"/>
+            <ComboBoxItem Content="300"/>
+            <ComboBoxItem Content="350"/>
+            <ComboBoxItem Content="400"/>
+            <ComboBoxItem Content="450"/>
+            <ComboBoxItem Content="500"/>
+            <ComboBoxItem Content="550"/>
+            <ComboBoxItem Content="600"/>
+            <ComboBoxItem Content="650"/>
+            <ComboBoxItem Content="750"/>
+            <ComboBoxItem Content="800"/>
+            <ComboBoxItem Content="850"/>
+            <ComboBoxItem Content="900"/>
+            <ComboBoxItem Content="950"/>
+            <ComboBoxItem Content="1000"/>
+        </ComboBox>
 
     </Grid>
 </Window>

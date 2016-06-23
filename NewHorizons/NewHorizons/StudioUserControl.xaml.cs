@@ -36,6 +36,9 @@ namespace NewHorizons
         {
             WindowDimensions windowDimensions = new WindowDimensions();
             windowDimensions.ShowDialog();
+            length = windowDimensions.length;
+            width = windowDimensions.width; 
+
         }
     }
 }
