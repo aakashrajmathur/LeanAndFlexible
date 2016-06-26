@@ -15,8 +15,10 @@ namespace NewHorizons
     /// </summary>
     public partial class StudioUserControl : UserControl
     {
+        //Globals:
         float length;
         float width;
+        Selection currentSelection;
 
         public StudioUserControl()
         {
@@ -27,18 +29,30 @@ namespace NewHorizons
         {
             if (selection == null)
                 return;
-
+            currentSelection = selection;
+            
             ReadDimensionsOfLayout();
-
+            
+           
         }
 
         private void ReadDimensionsOfLayout()
         {
             WindowDimensions windowDimensions = new WindowDimensions();
             windowDimensions.ShowDialog();
-            length = windowDimensions.length;
-            width = windowDimensions.width; 
 
+            length = windowDimensions.length;
+            LengthValueLabel.Content = length;
+
+            width = windowDimensions.width;
+            WidthValueLabel.Content = width;
+            
+            if (windowDimensions.backgroundImageLocation != null)
+            {
+                ImageBrush ib = new ImageBrush();
+                ib.ImageSource = new BitmapImage(new Uri(windowDimensions.backgroundImageLocation.ToString(), UriKind.Relative));
+                mainCanvas.Background = ib;
+            }
         }
     }
 }

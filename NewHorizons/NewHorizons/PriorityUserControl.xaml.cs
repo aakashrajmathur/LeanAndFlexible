@@ -135,13 +135,13 @@ namespace NewHorizons
         }
 
 
-        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (((System.Windows.UIElement)sender).IsVisible == false)
-            {
-                MessageBox.Show("Priority just lost visiblity, ask user to save work...");
-            }
-        }
+        //private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        //{
+        //    if (((System.Windows.UIElement)sender).IsVisible == false)
+        //    {
+        //        MessageBox.Show("Priority just lost visiblity, ask user to save work...");
+        //    }
+        //}
 
         private void saveAsButton_Click(object sender, RoutedEventArgs e)
         {

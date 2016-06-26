@@ -216,6 +216,15 @@
   <ItemGroup>
     <Resource Include="BluPrintLongRect.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="objectiveFunctionSample.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Edit32Icon.png" />
+    <Resource Include="Icons\Save32Icon.png" />
+    <Resource Include="Icons\Settings32Icon.png" />
+    <Resource Include="Icons\Settings32IconBlack.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

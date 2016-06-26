@@ -4,12 +4,83 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NewHorizons"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" 
-             d:DesignWidth="400" MaxWidth="800" MinWidth="400" Width="800">
+             mc:Ignorable="d"
+             VerticalAlignment="Stretch"
+             d:DesignWidth="400" MaxWidth="1000" MinWidth="400" Width="1000">
     <!--Background="#FF4C4C4C" -->
     <Grid>
+        <StackPanel x:Name="topStackPanel" Height="50" VerticalAlignment="Top" Background="#3F742A2A" Orientation="Horizontal">
+            <Button x:Name="SettingsButton" Padding="1" Margin="10,0,0,0" Width="50" BorderThickness="0" Background="#00DDDDDD">
+                <StackPanel>
+                    <Image Source="Icons/Settings32IconBlack.png" Stretch="None" />
+                    <TextBlock FontWeight="ExtraLight" FontSize="10" HorizontalAlignment="Center">Settings</TextBlock>
+                </StackPanel>
+            </Button>
 
-        
+            <Button x:Name="editDimensionsButton" Padding="1" Margin="10,0,0,0" Width="50" BorderThickness="0" Background="#00DDDDDD">
+                <StackPanel>
+                    <Image Source="Icons/Edit32Icon.png" Stretch="None" />
+                    <TextBlock FontWeight="ExtraLight" FontSize="10" HorizontalAlignment="Center">Edit size</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="saveLayoutButton" Padding="1" Margin="645,0,0,0" Width="55" BorderThickness="0" Background="#00DDDDDD">
+                <StackPanel>
+                    <Image Source="Icons/Save32Icon.png" Stretch="None" />
+                    <TextBlock FontWeight="ExtraLight" FontSize="10" HorizontalAlignment="Center">Save Layout</TextBlock>
+                </StackPanel>
+            </Button>
+            
+            <DockPanel Name="ScoreDockPanel" VerticalAlignment="Center" Background="#7FB1E29B" Margin="7,0,0,0" Width="170">
+                <Label FontWeight="ExtraLight" FontSize="21" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Score</Label>
+                <Label Name="ScoreValueLabel" FontWeight="ExtraLight" FontSize="21" Width="111" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">123456</Label>
+            </DockPanel>
+            
+        </StackPanel>
+
+        <Grid Margin="825,50,0,50" VerticalAlignment="Stretch" Grid.Row="1"
+              Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Grid}}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="rightInfoStackPanel" >
+                <Canvas x:Name="objectiveFunctionCanvas" Height="140">
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="objectiveFunctionSample.JPG" Stretch="Uniform"/>
+                    </Canvas.Background>
+                </Canvas>
+
+                <StackPanel Name="LayoutList" Margin="2,2,2,2">
+                    <Grid>
+                        <Label Content="Layouts" FontSize="18" Background="#FFEFF08E" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <Grid>
+                        <Button Content="Layout1 (5554332)" Background="Gray" Margin="2,2,2,2"/>
+                    </Grid>
+                    <Grid>
+                        <Button Content="Layout2 (5324389)" Background="Gray" Margin="2,2,2,2"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <DockPanel x:Name="bottomStackPanel" 
+                    Background="#3F195761" 
+                    VerticalAlignment="Bottom"  
+                    Grid.Column="2" LastChildFill="false" 
+                   Height="50">
+            <Label>Lenght</Label>
+            <Label Name="LengthValueLabel">500</Label>
+            <Label>Width</Label>
+            <Label Name="WidthValueLabel">500</Label>
+
+        </DockPanel>
+        <Grid Name="Body" Margin="0,50,175,50">
+            
+            <Canvas x:Name="mainCanvas" VerticalAlignment="Stretch" 
+                    HorizontalAlignment="Stretch" Background="LightGoldenrodYellow"/>
+        </Grid>
+
     </Grid>
 </UserControl>
