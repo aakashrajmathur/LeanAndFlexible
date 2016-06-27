@@ -19,14 +19,14 @@
 
             <Button x:Name="editDimensionsButton" Padding="1" Margin="10,0,0,0" Width="50" BorderThickness="0" Background="#00DDDDDD">
                 <StackPanel>
-                    <Image Source="Icons/Edit32Icon.png" Stretch="None" />
+                    <Image Source="Icons/Edit32IconBlack.png" Stretch="None" />
                     <TextBlock FontWeight="ExtraLight" FontSize="10" HorizontalAlignment="Center">Edit size</TextBlock>
                 </StackPanel>
             </Button>
 
             <Button x:Name="saveLayoutButton" Padding="1" Margin="645,0,0,0" Width="55" BorderThickness="0" Background="#00DDDDDD">
                 <StackPanel>
-                    <Image Source="Icons/Save32Icon.png" Stretch="None" />
+                    <Image Source="Icons/Save32IconBlack.png" Stretch="None" />
                     <TextBlock FontWeight="ExtraLight" FontSize="10" HorizontalAlignment="Center">Save Layout</TextBlock>
                 </StackPanel>
             </Button>
