@@ -39,7 +39,9 @@
         </StackPanel>
 
         <Grid Margin="825,50,0,50" VerticalAlignment="Stretch" Grid.Row="1"
-              Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Grid}}}">
+              Height="{Binding Path=ActualHeight, 
+                        RelativeSource={RelativeSource FindAncestor, 
+                            AncestorType={x:Type Grid}}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
