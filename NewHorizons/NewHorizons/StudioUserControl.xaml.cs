@@ -18,6 +18,7 @@ namespace NewHorizons
         //Globals:
         float length;
         float width;
+        float scale;
         Selection currentSelection;
 
         public StudioUserControl()
@@ -32,8 +33,19 @@ namespace NewHorizons
             currentSelection = selection;
             
             ReadDimensionsOfLayout();
-            
-           
+
+            mainCanvas.Height = GetHeight();
+            mainCanvas.Width = GetWidth();
+        }
+
+        private double GetWidth()
+        {
+            return width * scale;
+        }
+
+        private double GetHeight()
+        {
+            return length * scale;
         }
 
         private void ReadDimensionsOfLayout()
@@ -46,7 +58,9 @@ namespace NewHorizons
 
             width = windowDimensions.width;
             WidthValueLabel.Content = width;
-            
+
+            scale = Math.Min(800 / width, 500 / length);
+
             if (windowDimensions.backgroundImageLocation != null)
             {
                 ImageBrush ib = new ImageBrush();
