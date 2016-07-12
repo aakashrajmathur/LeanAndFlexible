@@ -11,6 +11,7 @@ namespace NewHorizons
     {
         public string name;
         public List<Part> parts;
+        public List<Layout> layouts;
         public List<Machine> machines { get; set; }
         public List<Selection> selections { get; set; }
 
@@ -19,8 +20,10 @@ namespace NewHorizons
             parts = new List<Part>();
             machines = new List<Machine>();
             selections = new List<Selection>();
+            layouts = new List<Layout>();
         }
 
         
     }
 }
+

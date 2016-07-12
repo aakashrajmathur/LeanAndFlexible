@@ -73,9 +73,13 @@
                     Grid.Column="2" LastChildFill="false" 
                    Height="50">
             <Label>Lenght</Label>
-            <Label Name="LengthValueLabel">500</Label>
+            <Label Name="LengthValueLabel"></Label>
             <Label>Width</Label>
-            <Label Name="WidthValueLabel">500</Label>
+            <Label Name="WidthValueLabel"></Label>
+            <Label>Top</Label>
+            <Label Name="TopValueLabel"></Label>
+            <Label>Left</Label>
+            <Label Name="LeftValueLabel"></Label>
 
         </DockPanel>
         <Grid Name="Body" Margin="0,50,175,50">

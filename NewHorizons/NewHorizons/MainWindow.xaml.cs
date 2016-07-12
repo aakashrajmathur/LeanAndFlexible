@@ -80,13 +80,16 @@ namespace NewHorizons
 
         private void StudioIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            StudioStarting ss = new StudioStarting(study);
-            ss.ShowDialog();
-            if (ss.DialogResult.Value)
+            StudioInitialConfigurations initialConfig = new StudioInitialConfigurations(study);
+            initialConfig.ShowDialog();
+            if (initialConfig.DialogResult.Value)
             {
                 HideAllUserControl();
                 SetAllIconsToUnSelected();
-                studioUserControl.updateUI(GetSelection(ss.startingSelectionName));
+                Selection selection = GetSelection(initialConfig.selectionName);
+                Layout layout = GetLayout(initialConfig.layoutName);
+                
+                studioUserControl.updateUI(selection, layout, initialConfig.length, initialConfig.width, initialConfig.backgroundImageLocation);
                 StudioIcon.Source = new BitmapImage(new Uri(@"Icons/Studio-Selected.png", UriKind.RelativeOrAbsolute));
                 studioUserControl.Visibility = Visibility.Visible;
             }
@@ -99,7 +102,19 @@ namespace NewHorizons
                 homeUserControl.Visibility = Visibility.Visible;
             }
         }
-        
+
+        private Layout GetLayout(string layoutName)
+        {
+            foreach (Layout layout in study.layouts)
+            {
+                if (layout.name.CompareTo(layoutName) == 0)
+                {
+                    return layout;
+                }
+            }
+            return null;
+        }
+
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             HideAllUserControl();

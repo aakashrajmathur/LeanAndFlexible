@@ -85,6 +85,7 @@
     </ApplicationDefinition>
     <Compile Include="CappedLine.cs" />
     <Compile Include="DataImport.cs" />
+    <Compile Include="Layout.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="Part.cs" />
     <Compile Include="PriorityStarting.xaml.cs">
@@ -99,8 +100,8 @@
       <DependentUpon>StudioUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Study.cs" />
-    <Compile Include="WindowDimensions.xaml.cs">
-      <DependentUpon>WindowDimensions.xaml</DependentUpon>
+    <Compile Include="StudioInitialConfigurations.xaml.cs">
+      <DependentUpon>StudioInitialConfigurations.xaml</DependentUpon>
     </Compile>
     <Page Include="HomeUserControl.xaml">
       <SubType>Designer</SubType>
@@ -137,7 +138,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowDimensions.xaml">
+    <Page Include="StudioInitialConfigurations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

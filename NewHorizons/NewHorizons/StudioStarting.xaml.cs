@@ -30,17 +30,7 @@ namespace NewHorizons
 
         private void ContinueButton_Loaded(object sender, RoutedEventArgs e)
         {
-            if (study != null) {
-                foreach (Selection s in study.selections)
-                {
-                    selectionsListBox.Items.Add(s.name);
-                }
-            }
-            else
-            {
-                //if study == null 
-                ContinueButton.IsEnabled = false;
-            }
+            
             
         }
 
