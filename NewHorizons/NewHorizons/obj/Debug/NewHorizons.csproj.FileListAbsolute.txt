@@ -40,3 +40,4 @@ C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\NewHorizons.exe
 C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\NewHorizons.pdb
 C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\StudioInitialConfigurations.g.cs
 C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\StudioInitialConfigurations.baml
+C:\src\LeanAndFlexible\NewHorizons\NewHorizons\obj\Debug\NewHorizons.csprojResolveAssemblyReference.cache

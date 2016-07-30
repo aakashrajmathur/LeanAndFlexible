@@ -21,9 +21,7 @@ namespace NewHorizons
             machines = new List<Machine>();
             selections = new List<Selection>();
             layouts = new List<Layout>();
-        }
-
-        
+        }     
     }
 }
 

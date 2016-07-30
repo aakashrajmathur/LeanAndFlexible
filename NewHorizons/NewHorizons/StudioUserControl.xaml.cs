@@ -28,7 +28,7 @@ namespace NewHorizons
         }
 
         public void updateUI(Selection selection, Layout layout, float length, float width, string backgroundImageLocation)
-        {
+        {            
             if (selection == null)
                 return;
             currentSelection = selection;
@@ -36,7 +36,7 @@ namespace NewHorizons
             this.length = length;
             this.width = width;
             this.scale = Math.Min(800 / width, 500 / length);
-
+             
             mainCanvas.Height = length * scale;
             mainCanvas.Width = width * scale;
 
@@ -59,6 +59,8 @@ namespace NewHorizons
         {
             //TODO: Draw machines on mainCanvas. If layout is null then default:
             //Pending...
+
+
         }
 
         private void DrawMachine(Machine machine)

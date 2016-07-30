@@ -76,12 +76,12 @@ namespace NewHorizons
 
         private void doneButton_Click(object sender, RoutedEventArgs e)
         {
-            if (comboBoxSelection.SelectedIndex > 0)
+            if (comboBoxSelection.SelectedIndex >= 0)
             {
                 selectionName = ((ComboBoxItem)(comboBoxSelection.Items[comboBoxSelection.SelectedIndex])).Content.ToString();
             }
 
-            if (comboBoxLayout.SelectedIndex > 0)
+            if (comboBoxLayout.SelectedIndex >= 0)
             {
                 layoutName = ((ComboBoxItem)(comboBoxLayout.Items[comboBoxLayout.SelectedIndex])).Content.ToString();
             }
